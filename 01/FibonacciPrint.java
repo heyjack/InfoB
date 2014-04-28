@@ -24,11 +24,11 @@ public class FibonacciPrint {
      while(n < 0){
       try {
         System.out.print("Bitte eine Zahl >= 0 : ");
-        BufferedReader is = new BufferedReader( new InputStreamReader(System.in));
+        BufferedReader is = new BufferedReader( new InputStreamReader(System.in));  //Läd in den Buffer die Eingegebene Zahl ein
         line = is.readLine();
-        val = Integer.parseInt(line);
+        val = Integer.parseInt(line); //Ließt nur die Zahl davon aus
         }
-
+      //Fehler Behandlung
       catch (NumberFormatException ex){
         System.err.println("Keine gültige Nummer: " + line);
         }
