@@ -10,7 +10,7 @@ import AlgoTools.IO;
 
 public class Fibonacci implements FibonacciInterface{
 
-  int n;
+  private int n;
 
 //Klassen Conrtuktor
   public Fibonacci(){
