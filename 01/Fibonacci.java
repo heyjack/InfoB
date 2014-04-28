@@ -26,7 +26,12 @@ public class Fibonacci implements FibonacciInterface{
       return n;
       }
     else{
-      return fib(n-1) + fib(n-2);
+      if(n > 46){
+      System.out.println("Maximaler Integer Wert überschritten!\nErgebnis über:");
+      return 2147483647;
+      }
+      else{
+        return fib(n-1) + fib(n-2);
       }
 
     }
