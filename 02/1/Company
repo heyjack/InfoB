@@ -1,0 +1,60 @@
+
+/******************************  Company.java  ********************************/
+
+import AlgoTools.IO;
+
+/**
+ * @version 01.05.14
+ *
+ * @author nbaumgartner
+ */
+
+public class Company {
+
+  private String name;
+  private double price;
+
+
+  //CONTRUKTOR
+  public Company(){
+    this.name = "Neue-Firma";
+    this.price = 1.0;
+  }
+
+  public Company(String s){
+    this();
+    this.name = s;
+  }
+
+  public Company(double d){
+    this();
+    this.price = d;
+  }
+
+  public Company(String s, double d){
+    this.name = s;
+    this.price = d;
+  }
+
+  //METHODEN
+  public String changeStockPrice(double d){
+    String farbe;
+    String weis = "\033[0m";
+    if(d<this.price){
+      farbe = "\033[31m";
+    }
+    else{
+      farbe = "\033[32m";
+    }
+    this.price = d;
+    String meldung = this.name+": "+farbe+d+weis;
+    return meldung;
+  }
+
+  public String insolvenz() throws Throwable{
+    String meldung = this.name+" ist Insolvenz";
+    finalize();
+    return meldung;
+  }
+
+}
