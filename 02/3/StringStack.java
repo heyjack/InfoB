@@ -1,0 +1,93 @@
+/**
+ * A Stack that holds Strings. Works after the LIFO (Last in first out)
+ * principle.
+ * 
+ * @author Mathias Menninghaus (mathias.menninghaus@uos.de)
+ * 
+ */
+public class StringStack {
+
+  public StringStack() {
+    this.first = null;
+  }
+
+  private StringStackEntry first;
+
+  /**
+   * Tests, whether this StringStack is empty or not.
+   * 
+   * @return true if this StringStack is empty, else false
+   */
+  public boolean empty() {
+    return this.first == null;
+  }
+
+  /**
+   * Returns the first element in the stack. Throws excpetion when stack is
+   * empty
+   * 
+   * @return First element or null if stack is empty
+   * @throws RuntimeException
+   *            if stack is empty.
+   */
+  public String peek() {
+    if (!this.empty()) {
+      return first.getString();
+    } else {
+      throw new RuntimeException("Stack is empty");
+    }
+  }
+
+  /**
+   * Deletes the first elment in the stack and returns it. Throws excpetion
+   * when stack is empty
+   * 
+   * @return first element in the stack
+   * @throws RuntimeException
+   *            if stack is empty.
+   */
+  public String pop() {
+    if (!this.empty()) {
+      String ret = first.getString();
+      this.first = this.first.getNext();
+      return ret;
+    } else {
+      throw new RuntimeException("Stack is empty");
+    }
+  }
+
+  /**
+   * Puts the String s on the stack.
+   * 
+   * @param s
+   *           String to be added.
+   */
+  public void push(String s) {
+    if (this.empty()) {
+      first = new StringStackEntry(s, null);
+    } else {
+      first = new StringStackEntry(s, first);
+    }
+  }
+
+  public StringStack deepcopy(){
+    StringStack falsch = new StringStack();
+    while(!this.empty()){
+      System.out.println("Orginal noch nicht leer");
+      falsch.push(this.peek());
+      this.pop();
+    }
+      System.out.println("Orginal leer");
+    StringStack rÃ¼ck = new StringStack();
+    while(!falsch.empty()){
+      System.out.println("Falsch noch nicht leer");
+      rÃ¼ck.push(falsch.peek());
+      this.push(falsch.peek());
+      falsch.pop();
+    }
+    return rÃ¼ck;
+  }
+
+
+}
+
