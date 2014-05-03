@@ -5,7 +5,7 @@ import AlgoTools.IO;
 /**
  * @version 01.05.14
  *  
- * @author nbaumgartner
+ * @author nbaumgartne
  */
 
 public class Fraction {
