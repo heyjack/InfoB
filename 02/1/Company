@@ -1,12 +1,15 @@
 
 /******************************  Company.java  ********************************/
 
-import AlgoTools.IO;
 
 /**
+ * Erstellt ein Objekt vom Typ "Company". Weiterhin laesst sich ueber die 
+ * Methode changeStockPrice() der Preis der Aktie aendern und uebertraegt dies
+ * in die Ticker-Klasse.
+ *
  * @version 01.05.14
  *
- * @author nbaumgartner
+ * @author nbaumgartner,jguese
  */
 
 public class Company {
@@ -15,28 +18,37 @@ public class Company {
   private double price;
 
 
-  //CONTRUKTOR
+  //Default Konstruktor
   public Company(){
     this.name = "Neue-Firma";
     this.price = 1.0;
   }
-
+  
+  // Konstruktor mit uebergebenem Namen
   public Company(String s){
     this();
     this.name = s;
   }
 
+  // Konstruktor mit uebergebenem Preis
   public Company(double d){
     this();
     this.price = d;
   }
 
+  // Konstruktor mit uebergebenem Namen und Preis
   public Company(String s, double d){
     this.name = s;
     this.price = d;
   }
 
-  //METHODEN
+  /**
+  * Aendert den Preis der Aktie und uebertraegt diese in den Ticker
+  * @return String mit der Meldung
+  * @param farbe Farbe der Aktie
+  * @param weis Farbcode von weiss
+  * 
+  */
   public String changeStockPrice(double d){
     String farbe;
     String weis = "\033[0m";
@@ -47,10 +59,16 @@ public class Company {
       farbe = "\033[32m";
     }
     this.price = d;
-    String meldung = this.name+": "+farbe+d+weis;
-    return meldung;
+    
+    return this.name+": "+farbe+d+weis; // Meldung
   }
 
+
+  /**
+  * Gibt einen String aus der ueber die Insolvenz der Firma
+  * berichtet. Finalize() entfernt das Objekt -> GarbageCollector
+  * @return String ueber Insolvenz der Firma
+  */
   public String insolvenz() throws Throwable{
     String meldung = this.name+" ist Insolvenz";
     finalize();
